@@ -1,1 +1,76 @@
-/* 여기에 스타일을 구현해 주세요 */
+/* 잘 구별되게 하기 위해 body 배경색을 핑크색 처리함 */
+body {
+  background-color: pink;
+}
+
+/* 인라인 요소의 공백때문에 오는 혼란 제거 */
+div {
+  font-size: 0;
+}
+
+/* 흰 박스 설정 */
+.box {
+  border: 1px solid black;
+  background-color: white;
+
+  width: 420px;
+  height: 225px;
+}
+
+/* 
+목록을 담을 ul
+목록 요소에 나타나는 disc 마크를 없앰.
+agent style인 들여쓰기 없앰.
+가로, 세로 사이즈를 시안에 맞게 적용
+*/
+ul {
+  list-style: none;
+  padding-inline-start: 0;
+
+  width: 396px;
+  height: 195px;
+}
+
+/*
+아바타 프로필을 2행 4열로 보이게 하기 위해
+block 요소인 li를 inline block요소로 변경
+*/
+li {
+  display: inline-block;
+}
+
+/*
+아바타 이미지와 상태표시 이미지를 담을 div(분자)
+상태표시 이미지의 Position을 임의로 조절하기 위해 position을 relative로 변경
+*/
+.profile-container {
+  position: relative;
+}
+
+/* 
+아바타 이미지의 여백을 20px로 지정하라 하였으나
+margin: 20px로 하면 붙어있는 이미지 사이의 여백이 20+20=40px이 되므로
+마진을 10px로 지정
+*/
+img {
+  margin: 10px;
+}
+
+/*
+상태표시용 원형 이미지를 figma에서 svg코드로 복사/붙여넣기 함.
+position: absolute로 위치를 임의 조절함.
+*/
+.status-indicator {
+  position: absolute;
+  top: 56px;
+  left: 56px;
+}
+
+/* svg태그 안의 circle 태그에 클래스를 부여하고 fill을 조절하였음. */
+.online {
+  fill: #4cfe88;
+}
+
+.offline {
+  fill: #dbdbdb;
+}
