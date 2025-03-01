@@ -1,1 +1,112 @@
-/* CSS를 활용하여 레이아웃 및 스타일링을 완성해주세요 */
+@import "../../common/best-reset.css";
+
+:root {
+  --font-size-default: 16px;
+  --font-color-default: #121212;
+  --color-naver-green: #03cf5d;
+
+  --font-color-gray: #8ace00;
+  --focus-color: #24388d;
+}
+
+body * {
+  font-size: var(--font-size-dafault);
+  color: var(--font-color-default);
+}
+
+a {
+  text-decoration: none;
+}
+
+/* 서식 시작 */
+
+svg.naver-logo {
+  width: 230px;
+}
+
+div.naver-logo-container {
+  margin-block-end: 2.8125rem;
+}
+
+label[for="userEmail"],
+label[for="userPwd"] {
+  display: none;
+}
+
+input[id="userEmail"],
+input[id="userPwd"] {
+  inline-size: 100%;
+  max-inline-size: 460px;
+  block-size: 3rem;
+  padding-inline-start: 0.875rem;
+  padding-block-start: 0.875rem;
+  padding-block-end: 0.8125rem;
+
+  display: block;
+  margin: 0 auto; /* 가운데 정렬 */
+}
+div.id-fail-text,
+div.pwd-fail-text {
+  display: none;
+  color: red;
+  padding-inline-start: 0.1rem;
+  margin-block-start: 0.4375rem;
+}
+
+div.email-input-component,
+div.pwd-input-component {
+  margin-block-end: 0.9375rem;
+}
+
+/* 로그인 버튼 */
+.login-button {
+  background: var(--color-naver-green);
+  color: white;
+  inline-size: 100%;
+  max-inline-size: 460px;
+  block-size: 3.5rem;
+
+  display: block;
+  margin: 0 auto;
+}
+
+.login-module {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  margin-block-start: 6.25rem;
+  padding-inline: 1.25rem;
+
+  .login-form {
+    width: 100%;
+  }
+
+  .option-area {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    margin-block-start: 3.125rem;
+
+    inline-size: 100%;
+    max-inline-size: 460px;
+    margin: 0 auto; /* 가운데 정렬 */
+    padding-block-start: 1rem;
+  }
+}
+
+:focus {
+  outline: none;
+  border: 1px solid var(--focus-color);
+}
+
+/* 중첩 스타일의 구문 */
+/* 반응형 디자인 - 기본, 모바일(768px 미만) */
+body {
+  background-color: white;
+  min-width: 370px;
+
+  /* 반응형 디자인 - 데스크톱(768px 이상) */
+  @media (min-width: 768px) {
+  }
+}

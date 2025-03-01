@@ -1,1 +1,176 @@
-<!-- HTML 마크업을 작성해 주세요 -->
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인 화면 과제</title>
+    <link
+      rel="shortcut icon"
+      href="/src/assets/favicon/likelion.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="./src/assets/favicon/likelion.svg" />
+    <link
+      rel="preload"
+      as="font"
+      href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT-Regular.woff2"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css"
+    />
+    <link rel="stylesheet" href="./styles/login.css" />
+  </head>
+  <body>
+    <div class="login-module">
+      <!-- Naver Logo -->
+      <div class="naver-logo-container">
+        <svg
+          class="naver-logo"
+          width="230"
+          height="44"
+          viewBox="0 0 230 44"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M30.0764 23.5394L13.6301 0H0V43.9824H14.279V20.443L30.7252 43.9824H44.3554V0H30.0764V23.5394Z"
+            fill="#03CF5D"
+          />
+          <path
+            d="M66.2086 0L48.8973 43.9824H63.6132L65.701 38.1767H82.2929L84.3851 44H99.0967L81.7853 0.0175967L66.2086 0ZM69.0644 27.5946L73.9992 13.8545L78.9295 27.5946H69.0644Z"
+            fill="#03CF5D"
+          />
+          <path
+            d="M116.624 28.9184L106.234 0H91.5224L108.834 43.9824H124.41L141.722 0H127.006L116.624 28.9184Z"
+            fill="#03CF5D"
+          />
+          <path
+            d="M160.326 27.2735H180.449V16.7089H160.326V10.7801H180.666V0H146.264V43.9824H181.098V33.2023H160.326V27.2735Z"
+            fill="#03CF5D"
+          />
+          <path
+            d="M218.842 28.8921L220.166 28.3335C225.295 26.1959 227.903 21.5646 227.903 15.6885C227.903 10.1335 225.869 6.0124 221.861 3.47461C218.131 1.10396 213.298 0 206.642 0H188.024V43.9824H201.87V31.6937H206.849L215.284 43.9824H230L218.842 28.8921ZM209.228 20.4826H201.654V11.2111H209.228C210.462 11.2111 211.645 11.6995 212.518 12.5689C213.39 13.4383 213.88 14.6174 213.88 15.8469C213.88 17.0763 213.39 18.2555 212.518 19.1248C211.645 19.9942 210.462 20.4826 209.228 20.4826V20.4826Z"
+            fill="#03CF5D"
+          />
+        </svg>
+      </div>
+
+      <form action="./" class="login-form">
+        <!-- 아이디(이메일)입력폼 -->
+        <div class="email-input-component">
+          <label for="userEmail">이메일</label>
+          <input
+            type="email"
+            name="userEmail"
+            id="userEmail"
+            placeholder="아이디(이메일)"
+            required
+            maxlength="50"
+          />
+          <div class="id-fail-text">아이디는 이메일 형식으로 입력해주세요.</div>
+        </div>
+
+        <!-- 비밀번호 입력폼 -->
+        <div class="pwd-input-component">
+          <label for="userPwd">비밀번호</label>
+          <input
+            type="password"
+            name="userPwd"
+            id="userPwd"
+            placeholder="비밀번호"
+            required
+            minlength="10"
+          />
+          <div class="pwd-fail-text">
+            비밀번호는 10자리 이상으로 입력해주세요.
+          </div>
+        </div>
+
+        <!-- 로그인 버튼 -->
+        <div>
+          <button type="submit" class="login-button">로그인</button>
+        </div>
+
+        <!-- 로그인 상태유지 체크박스 -->
+        <div class="option-area">
+          <div class="keep-login-checkbox">
+            <input
+              type="checkbox"
+              value="on"
+              name="keepLogin"
+              id="keepLogin"
+              tabindex="0"
+            />
+            <label for="keep-login-checkbox-label">로그인 상태유지</label>
+          </div>
+
+          <!-- IP보안 링크 -->
+          <div class="ip-security">
+            <a href="./pages/ip_security.html" class="ip-security-link"
+              >IP보안 <span class="ip-security-status">OFF</span></a
+            >
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const loginForm = document.querySelector(".login-form");
+        const emailInput = document.querySelector("#userEmail");
+        const passwordInput = document.querySelector("#userPwd");
+        const emailError = document.querySelector(".id-fail-text");
+        const passwordError = document.querySelector(".pwd-fail-text");
+
+        // 요소가 잘 가져와졌는지 Console 로그 추가
+        console.log("이메일 input:", emailInput);
+        console.log("비밀번호 input:", passwordInput);
+        console.log("이메일 오류 메시지:", emailError);
+        console.log("비밀번호 오류 메시지:", passwordError);
+
+        loginForm.addEventListener("submit", function (event) {
+          let isValid = true;
+
+          console.log("폼 제출 감지됨!");
+
+          // 📌 이메일 유효성 검사
+          const emailValue = emailInput.value.trim();
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 이메일 형식 정규식
+
+          if (emailValue === "") {
+            console.log("⚠ 이메일이 비어 있음!");
+            emailError.style.display = "block"; // 오류 메시지 표시
+            isValid = false;
+          } else if (!emailRegex.test(emailValue)) {
+            console.log("⚠ 이메일 형식이 잘못됨!");
+            emailError.style.display = "block"; // 오류 메시지 표시
+            isValid = false;
+          } else {
+            console.log("✅ 이메일 정상 입력됨!");
+            emailError.style.display = "none"; // 오류 메시지 숨김
+          }
+
+          // 📌 비밀번호 유효성 검사
+          const passwordValue = passwordInput.value.trim();
+          if (passwordValue.length < 10) {
+            console.log("⚠ 비밀번호 길이 오류!");
+            passwordError.style.display = "block"; // 오류 메시지 표시
+            isValid = false;
+          } else {
+            console.log("✅ 비밀번호 정상 입력됨!");
+            passwordError.style.display = "none"; // 오류 메시지 숨김
+          }
+
+          // 유효성 검사 실패 시 폼 제출 막기
+          if (!isValid) {
+            console.log("🚨 폼 제출 차단됨!");
+            event.preventDefault();
+          } else {
+            console.log("✅ 폼 제출 진행됨!");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
