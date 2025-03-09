@@ -1,0 +1,84 @@
+@import "./reset.css";
+@import "./theme.css";
+@import "./base.css";
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--large-spacing);
+  color: var(--white);
+  height: var(--size);
+  width: 100%;
+  max-width: 1200px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.title {
+  font-size: var(--large-text);
+  font-weight: bold;
+  margin-bottom: var(--x-small-spacing);
+}
+
+.description {
+  font-size: var(--small-text);
+  line-height: var(--line-normal);
+  margin-bottom: var(--small-spacing);
+  color: var(--black);
+}
+
+.comming-soon {
+  font-size: var(--small-text);
+  line-height: var(--line-normal);
+  margin-bottom: var(--small-spacing);
+  color: var(--gray);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--base-spacing);
+}
+
+button {
+  display: inline-block;
+  padding: var(--x-small-spacing) var(--small-spacing);
+  border-radius: 50px;
+  font-size: var(--x-small-text);
+  border: none;
+}
+
+.learn-more {
+  background-color: var(--blue-300);
+  color: var(--white);
+}
+.learn-more:hover {
+  background-color: var(--blue-400);
+}
+
+.show-price {
+  background-color: transparent;
+  border: 2px solid var(--white);
+  color: var(--white);
+}
+.show-price:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+@media (min-width: 1024px) {
+  .card {
+    max-width: 100%;
+  }
+}
